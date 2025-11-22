@@ -1,32 +1,47 @@
-# kms_minidrive
-A secure cloud file manager with JWT login, AWS S3 storage, and MySQL database. Users can upload, search, download, delete, and share files with expiring links. Built with Flask and Bootstrap, deployed on Amazon Linux EC2.
-README.md
-markdown
-# Mini Google Drive
+# 🗂️ KM Mini Drive (kms_minidrive)
 
-A secure, scalable file manager built with Flask, JWT authentication, AWS S3 storage, and MySQL. Users can sign up, log in, upload files, and share download links — all through a polished Bootstrap interface.
+A secure, scalable cloud file manager built with **Flask**, **JWT authentication**, **AWS S3 storage**, and **MySQL**.  
+Users can sign up, log in, upload files, search, download, delete, and share files with expiring links — all through a polished **Bootstrap interface**.  
+Frontend is hosted on **Amazon S3 (static website hosting)**, while the backend runs on **Amazon EC2**.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 JWT-based user authentication
-- 📤 Upload files to AWS S3
-- 🔗 Generate secure download links
-- 🗂️ View and manage uploaded files
-- 🎨 Responsive UI with Bootstrap
-- 🧠 MySQL backend for user and file metadata
+- 🔐 JWT-based user authentication  
+- 📤 Upload files to AWS S3  
+- 🔗 Generate secure expiring download links  
+- 🗂️ Search, view, and manage uploaded files  
+- 🎨 Responsive UI with Bootstrap (hosted on S3)  
+- 🧠 MySQL backend for user and file metadata  
+- ☁️ Cloud-native deployment on AWS EC2 + S3  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Flask, Python
-- **Frontend**: HTML, CSS, Bootstrap, JavaScript
-- **Database**: MySQL (local EC2)
-- **Cloud Storage**: AWS S3
-- **Auth**: JWT
-- **Deployment**: Amazon EC2 (Amazon Linux)
+- **Backend**: Flask, Python  
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript  
+- **Database**: MySQL (local EC2 instance)  
+- **Cloud Storage**: AWS S3  
+- **Authentication**: JWT  
+- **Deployment**: Amazon EC2 (Amazon Linux) + S3 static hosting  
+
+---
+
+## 🌐 Deployment Architecture
+
+- **Frontend**: Hosted on Amazon S3 with static website hosting  
+  URL → `http://elevatelab1.s3-website.ap-south-1.amazonaws.com`  
+- **Backend**: Flask app running on Amazon EC2 (port 5000)  
+- **Storage**: AWS S3 bucket for file uploads/downloads  
+- **Database**: MySQL running locally on EC2  
+
+### 🔄 Workflow
+1. User accesses the frontend via the S3 bucket URL.  
+2. Frontend (HTML, CSS, JS, Bootstrap) makes API calls to the EC2 backend.  
+3. Backend authenticates users with JWT and interacts with MySQL.  
+4. Files are stored/retrieved from the S3 storage bucket.  
 
 ---
 
@@ -53,26 +68,21 @@ DB_PASSWORD=your_db_password
 DB_NAME=mini_drive
 4. Run the app
 bash
-python app.py
-🌐 Live Demo
-Access the deployed app at: http://13.204.3.189
-📸 Screenshots
-Add screenshots to docs/screenshots/ and embed here.
-
-📄 Report
-If submitting a report, include docs/report.pdf and link it here.
-
-📁 Repo Structure
+python3 app.py
+📁 Repository Structure
 Code
 kms_minidrive/
 ├── app.py
-├── templates/
-├── static/
-├── requirements.txt
-├── .env.example
-├── README.md
+├── templates/          # HTML templates
+├── static/             # JS, CSS, images
+├── requirements.txt    # Dependencies
+├── .env.example        # Environment variables template
+├── README.md           # Documentation
 └── docs/
-    ├── screenshots/
-    └── report.pdf
-🧠 Author
-Kanmani N U Final-year engineering student at SASTRA University Focused on secure cloud deployment, backend architecture, and polished UI workflows.
+    ├── screenshots/    # UI screenshots
+    └── report.pdf      # Optional project report
+📸 Screenshots
+Screenshots of the working app (login, upload, file list, share, download) are included in: docs/Minidrive - PICTURES OF THE WORKING APP...
+
+👤 Author
+Kanmani N U Final-year engineering student at SASTRA University Focused on secure cloud deployment, backend architecture, and polished UI workflows.and polished UI workflows.
