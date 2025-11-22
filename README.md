@@ -75,13 +75,4 @@ kms_minidrive/
     ├── screenshots/
     └── report.pdf
 🧠 Author
-Kanmani N U Final-year engineering student at SASTRA University Focused on secure cloud deployment, backend architecture, and polished UI workflows
-
-📜 License
-This project is licensed under the MIT License.
-
-Code
-
----
-
-Let me know if you want to tweak the tone, add screenshots, or generate your short
+Kanmani N U Final-year engineering student at SASTRA University Focused on secure cloud deployment, backend architecture, and polished UI workflows.
