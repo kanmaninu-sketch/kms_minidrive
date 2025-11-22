@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload File | Mini Google Drive</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .container { max-width: 720px; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">📤 Upload Your File</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div class="mb-3">
+        <input type="file" class="form-control" name="file" id="fileInput" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100" id="uploadBtn">Upload</button>
+    </form>
+
+    <div id="uploadStatus" class="mt-4"></div>
+
+    <div class="text-center mt-3">
+      <a href="/frontend" class="btn btn-outline-secondary">View Uploaded Files</a>
+    </div>
+  </div>
+
+  <script>
+    const BACKEND = 'http://13.204.3.189:5000';
+
+    function getToken() {
+      return localStorage.getItem('token');
+    }
+
+    function showStatus(html) {
+      document.getElementById('uploadStatus').innerHTML = html;
+    }
+
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files || fileInput.files.length === 0) {
+        showStatus('<div class="alert alert-warning">Select a file to upload.</div>');
+        return;
+      }
+
+      const token = getToken();
+      if (!token) {
+        showStatus('<div class="alert alert-warning">You must log in first.</div>');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      const btn = document.getElementById('uploadBtn');
+      btn.disabled = true;
+      btn.textContent = 'Uploading...';
+
+      try {
+        const res = await fetch(`${BACKEND}/upload`, {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token },
+          body: formData
+        });
+
+        let data = {};
+        try { data = await res.json(); } catch (err) {}
+
+        if (res.ok) {
+          showStatus(`<div class="alert alert-success">${data.message || 'Upload successful'}</div>`);
+          fileInput.value = '';
+        } else {
+          const errMsg = data.error || data.message || res.statusText || `HTTP ${res.status}`;
+          showStatus(`<div class="alert alert-danger">Upload failed: ${errMsg}</div>`);
+        }
+      } catch (err) {
+        showStatus(`<div class="alert alert-danger">Network error: ${err.message}</div>`);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Upload';
+      }
+    });
+  </script>
+</body>
+</html>
+
