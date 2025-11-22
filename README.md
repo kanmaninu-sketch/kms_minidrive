@@ -22,7 +22,7 @@ Frontend is hosted on **Amazon S3 (static website hosting)**, while the backend 
 
 - **Backend**: Flask, Python  
 - **Frontend**: HTML, CSS (Bootstrap), JavaScript  
-- **Database**: MySQL (local EC2 instance)  
+- - **Database**: MariaDB (local EC2)  
 - **Cloud Storage**: AWS S3  
 - **Authentication**: JWT  
 - **Deployment**: Amazon EC2 (Amazon Linux) + S3 static hosting  
