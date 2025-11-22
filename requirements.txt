@@ -4,3 +4,4 @@ boto3==1.28.57
 python-dotenv==1.0.0
 PyJWT==2.8.0
 mysql-connector-python==8.2.0
+mariadb==1.1.8
