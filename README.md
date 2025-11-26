@@ -112,4 +112,4 @@ kms_minidrive/
 Screenshots of the working app (login, upload, file list, share, download) are included in: docs/Minidrive - PICTURES OF THE WORKING APP...
 
 👤 Author
-Kanmani N U Final-year engineering student at SASTRA University Focused on secure cloud deployment, backend architecture, and polished UI workflows.
+Kanmani N U from SASTRA University, passionate about building secure, scalable cloud systems and crafting user‑centric web applications with polished UI workflows.
